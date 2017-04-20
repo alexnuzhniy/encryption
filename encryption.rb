@@ -22,10 +22,12 @@ end
 puts "\nChoose the way of encryption:"
 puts "1. MD5"
 puts "2. SHA1"
+puts "3. SHA2"
+
 way_of_encryption = STDIN.gets.to_i
 
 # Validating choice
-until way_of_encryption.between?(1,2) do
+until way_of_encryption.between?(1,3) do
   print "Choose correct option: "
   way_of_encryption = STDIN.gets.to_i
 end
@@ -34,6 +36,7 @@ end
 encrypted_input = case way_of_encryption
                     when 1 then Digest::MD5.hexdigest(user_input)
                     when 2 then Digest::SHA1.hexdigest(user_input)
+                    when 3 then Digest::SHA2.hexdigest(user_input)
                   end
 
 puts "\nResult: #{encrypted_input}"
